@@ -69,16 +69,16 @@
                         <strong>Role:</strong> <?php echo htmlspecialchars($data['user']['role']); ?>
                     </div>
                     <div class="d-flex justify-content-end mt-3">
-                         <a type="button" class="btn btn-primary editProfile" data-toggle="modal" data-target="#editProfileModal" data-id="<?= $user['id']; ?>">Edit</a>
-                        <a href="<?= BASEURL; ?>/platinum" type="button" class="btn btn-secondary">Back</a>
+                        <a type="button" class="btn btn-primary editProfile" data-toggle="modal" data-target="#editProfileModal" data-id="<?= $user['id']; ?>">Edit</a>
+                        <a href="<?= BASEURL; ?>/crmp" type="button" class="btn btn-secondary">Back</a>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 
-     <!-- Update Modal HTML -->
-     <div id="editProfileModal" class="modal fade">
+      <!-- Update Modal HTML -->
+      <div id="editProfileModal" class="modal fade">
         <div class="modal-dialog">
             <div class="modal-content">
                  <form action="<?= BASEURL; ?>/profile/edit" method="POST">
@@ -131,4 +131,5 @@
             </div>
         </div>
     </div>
+    
     

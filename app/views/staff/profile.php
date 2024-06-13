@@ -69,16 +69,71 @@
                         <strong>Role:</strong> <?php echo htmlspecialchars($data['user']['role']); ?>
                     </div>
                     <div class="d-flex justify-content-end mt-3">
-                         <a type="button" class="btn btn-primary editProfile" data-toggle="modal" data-target="#editProfileModal" data-id="<?= $user['id']; ?>">Edit</a>
-                        <a href="<?= BASEURL; ?>/platinum" type="button" class="btn btn-secondary">Back</a>
+                    <a type="button" class="btn btn-primary editProfile" data-toggle="modal" data-target="#editProfileModal" data-id="<?= $user['id']; ?>">Edit</a>
+                    <a href="<?= BASEURL; ?>/staff" type="button" class="btn btn-secondary">Back</a>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 
-     <!-- Update Modal HTML -->
-     <div id="editProfileModal" class="modal fade">
+    <!-- Update Modal HTML -->
+    <div id="editProfileModal" class="modal fade">
+        <div class="modal-dialog">
+            <div class="modal-content">
+            <form action="<?= BASEURL; ?>/profile/edit" method="POST">
+                    <div class="modal-header">						
+                        <h4 class="modal-title">Edit User</h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    </div>
+                    <div class="modal-body">	
+                    <input type="hidden" id="id" name="id" class="form-control" required>				
+                        <div class="form-group">
+                            <label>Full Name</label>
+                            <input type="text" id="name" name="name" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label>email</label>
+                            <input type="email" id="email" name="email" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label>phone</label>
+                            <input type="phone" id="phone" name="phone" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                    <label for="role" class="form-label" >Role</label>
+                    <select name="role" id="role" class="form-control"   required>
+                        <option value="" disabled selected>Select Your Role</option>
+                        <option value="CRMP">CRMP</option>
+                        <option value="Platinum">Platinum</option>
+                        <option value="Staff">Staff</option>
+                        <option value="Mentor">Mentor</option>
+                    </select>
+                </div>
+                        <div class="form-group">
+                            <label>Matric ID</label>
+                            <input type="matric" id="matric"  name="matric" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Address</label>
+                            <input type="address" id="address"  name="address" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label>password</label>
+                            <input type="password" id="password" name="password" class="form-control" required>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
+                        <input type="submit" name="submit" class="btn btn-success" value="Edit">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+      <!-- Update Modal HTML -->
+      <div id="editProfileModal" class="modal fade">
         <div class="modal-dialog">
             <div class="modal-content">
                  <form action="<?= BASEURL; ?>/profile/edit" method="POST">
@@ -131,4 +186,5 @@
             </div>
         </div>
     </div>
+    
     

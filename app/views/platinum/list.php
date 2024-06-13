@@ -34,7 +34,7 @@
 						<tr>
 							<td><?= htmlspecialchars( $user['name']); ?></td>
 							<td><?= htmlspecialchars( $user['email']); ?></td>
-							<td><a href="<?= BASEURL; ?>/platinum/profile/<?= $user['id']?>" class="btn btn-info">View Profile</a></td>
+							<td><a href="<?= BASEURL; ?>/platinum/listProfile/<?= $user['id']?>" class="btn btn-info">View Profile</a></td>
 							<td><?= htmlspecialchars( $user['phone']); ?></td>
 							<td><?= htmlspecialchars( $user['role']); ?></td>
 							<td><?= htmlspecialchars( $user['matric']); ?></td>

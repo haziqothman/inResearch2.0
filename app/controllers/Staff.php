@@ -37,6 +37,35 @@ class Staff extends Controller {
       }
   }
 
+  public function profile()
+  {
+      $data['judul'] = 'Daftar Mahasiswa';
+      $role = $_SESSION["role"];
+      $id = $_SESSION["id"];
+      $data['user'] =  $this->model('Platinum_model')->getUserByIdAndRole($id, $role); 
+
+      if (!$data['user']) {
+        // Handle case where user is not found or role mismatch
+        // You could redirect to an error page or show a not found message
+        die('User not found or role mismatch.');
+      }
+    
+      $this->view('templates/header', $data);
+      $this->view('staff/profile', $data);
+      $this->view('templates/footer', $data);
+    
+  }
+
+  public function getProfile()
+  {
+      $data['judul'] = 'Daftar Mahasiswa';
+      $role = $_SESSION["role"];
+      $id = $_SESSION["id"];
+
+      echo json_encode($this->model('Platinum_model')->getUserById($id));
+     
+  }
+
   public function getEdit()
   {
       echo json_encode($this->model('Platinum_model')->getUserById($_POST['id']));
@@ -52,4 +81,13 @@ class Staff extends Controller {
         }
       }
   }
+
+  public function report() {
+    $data['judul'] = 'User Profile Report';
+    $data['users'] = $this->model('Platinum_model')->getAllUser(); 
+
+    $this->view('templates/header', $data);
+    $this->view('staff/report', $data);
+    $this->view('templates/footer', $data);
+}
 }

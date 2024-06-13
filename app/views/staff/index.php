@@ -1,4 +1,207 @@
+<style>
+        /* Import Google font - Poppins */
+        @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap");
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Poppins", sans-serif;
+        }
 
+        /* Sidebar styles */
+        .sidebar {
+            position: fixed;
+            height: 100%;
+            width: 260px;
+            background: #d1c4e9; /* Soft purple */
+            padding: 15px;
+            z-index: 99;
+        }
+
+        .logo {
+            font-size: 25px;
+            padding: 0 15px;
+            color: #4a148c; /* Dark purple */
+        }
+
+        .sidebar a {
+            color: #4a148c; /* Dark purple */
+            text-decoration: none;
+        }
+
+        .menu-content {
+            position: relative;
+            height: 100%;
+            width: 100%;
+            margin-top: 40px;
+            overflow-y: scroll;
+        }
+
+        .menu-content::-webkit-scrollbar {
+            display: none;
+        }
+
+        .menu-items {
+            height: 100%;
+            width: 100%;
+            list-style: none;
+            transition: all 0.4s ease;
+        }
+
+        .submenu-active .menu-items {
+            transform: translateX(-56%);
+        }
+
+        .menu-title {
+            color: #4a148c; /* Dark purple */
+            font-size: 14px;
+            padding: 15px 20px;
+        }
+
+        .item a,
+        .submenu-item {
+            padding: 16px;
+            display: inline-block;
+            width: 100%;
+            border-radius: 12px;
+            color: #4a148c; /* Dark purple */
+        }
+
+        .item i {
+            font-size: 12px;
+        }
+
+        .item a:hover,
+        .submenu-item:hover,
+        .submenu .menu-title:hover {
+            background: rgba(0, 0, 0, 0.1);
+        }
+
+        .submenu-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: #4a148c; /* Dark purple */
+            cursor: pointer;
+        }
+
+        .submenu {
+            position: absolute;
+            height: 100%;
+            width: 100%;
+            top: 0;
+            right: calc(-100% - 26px);
+            height: calc(100% + 100vh);
+            background: #d1c4e9; /* Soft purple */
+            display: none;
+        }
+
+        .show-submenu ~ .submenu {
+            display: block;
+        }
+
+        .submenu .menu-title {
+            border-radius: 12px;
+            cursor: pointer;
+        }
+
+        .submenu .menu-title i {
+            margin-right: 10px;
+        }
+
+        /* Navbar and main content styles */
+        .navbar,
+        .main {
+            left: 260px;
+            width: calc(100% - 260px);
+            transition: all 0.5s ease;
+            z-index: 1000;
+        }
+
+        .sidebar.close ~ .navbar,
+        .sidebar.close ~ .main {
+            left: 0;
+            width: 100%;
+        }
+
+        .navbar {
+            position: fixed;
+            color: #fff;
+            padding: 15px 20px;
+            font-size: 25px;
+            background: #7b1fa2; /* Darker soft purple */
+            cursor: pointer;
+        }
+
+        .navbar #sidebar-close {
+            cursor: pointer;
+        }
+
+        .main {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            padding: 20px;
+            z-index: 100;
+            background: #ede7f6; /* Lighter soft purple */
+        }
+
+        .main h1 {
+            color: #11101d;
+            font-size: 40px;
+            text-align: center;
+        }
+
+        /* Form container styles */
+        .container {
+            max-width: 600px;
+            margin: auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .container h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .form-group button {
+            width: 100%;
+            padding: 10px;
+            background-color: #ba68c8; /* Soft purple */
+            border: none;
+            border-radius: 5px;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        .form-group button:hover {
+            background-color: #ab47bc; /* Darker soft purple */
+        }
+</style>
   <body>
     <nav class="sidebar">
     <img src="<?= BASEURL; ?>/img/dashboard.jpeg" alt="Flowers" width="40" ><a href="login.php" class="logo">InResearch</a>
@@ -20,10 +223,10 @@
                 <a href="<?= BASEURL; ?>/staff/list">Manage User Profile</a>
               </li>
               <li class="item">
-                <a href="profile.php">View profile</a>
-              </li>
+                 <a href="<?= BASEURL; ?>/staff/profile">View profile</a>               
+               </li>
               <li class="item">
-                <a href="userReport.php">profile report</a>
+                <a href="<?= BASEURL; ?>/staff/report">profile report</a>
               </li>
             </ul>
           </li>
@@ -98,20 +301,18 @@
           </li>
           <li class="item">
             <div class="submenu-footer">
-            <i class="fas fa-sign-out"></i>
-            <a href="logout.php" class="btn btn-outline-light" style="margin-top:220px">Logout</a>
-              <i class="fa-solid fa-chevron-right"></i>
+            <a href="<?= BASEURL; ?>/login/getLogout" class="btn btn-warning" style="margin-top:220px">Logout</a>
             </div>
           </li>
     </nav>
 
-    <nav class="navbar" style="background:#4070f4">
-      <i class="fa-solid fa-bars" id="sidebar-close"></i>
-	  
+    <nav class="navbar">
+        <i class="fa-solid fa-bars" id="sidebar-close"></i>
+        <span>Staff</span>
     </nav>
 
     <main class="main">
-         <h1 class="information__title">Welcome to staff, <?= htmlspecialchars($_SESSION['name']) ?></h1>
+         <h1 class="information__title">Hi, Welcome <?= htmlspecialchars($_SESSION['name']) ?></h1>
     </main>
 
 

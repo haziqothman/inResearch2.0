@@ -261,7 +261,7 @@ table.table .avatar {
 <body>
 
 	<div class="crud">
-		<a href="login.php" style=" font-size: 40px; color:black; text-decoration:none;"><i class="fa fa-arrow-circle-left" aria-hidden="true" style="color:#4070f4"></i></i></a>
+		<a href="<?= BASEURL; ?>/staff/index" style=" font-size: 40px; color:black; text-decoration:none;"><i class="fa fa-arrow-circle-left" aria-hidden="true" style="color:#4070f4"></i></i></a>
 	</div>
 <div class="container-xl">
 	<div class="table-responsive">
@@ -377,7 +377,8 @@ table.table .avatar {
 					<h4 class="modal-title">Edit User</h4>
 					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
 				</div>
-				<div class="modal-body">					
+				<div class="modal-body">	
+				<input type="hidden" id="id" name="id" class="form-control" required>				
 					<div class="form-group">
 						<label>Full Name</label>
 						<input type="text" id="name" name="name" class="form-control" required>
@@ -391,8 +392,8 @@ table.table .avatar {
 						<input type="phone" id="phone" name="phone" class="form-control" required>
 					</div>
 					<div class="form-group">
-                <label for="role" class="form-label">Role</label>
-                <select name="role" id="role" class="form-control" required>
+                <label for="role" class="form-label" >Role</label>
+                <select name="role" id="role" class="form-control"   required>
                     <option value="" disabled selected>Select Your Role</option>
                     <option value="CRMP">CRMP</option>
                     <option value="Platinum">Platinum</option>
@@ -403,6 +404,10 @@ table.table .avatar {
 					<div class="form-group">
 						<label>Matric ID</label>
 						<input type="matric" id="matric"  name="matric" class="form-control" required>
+					</div>
+					<div class="form-group">
+						<label>Address</label>
+						<input type="address" id="address"  name="address" class="form-control" required>
 					</div>
 					<div class="form-group">
 						<label>password</label>
